@@ -1,0 +1,57 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+.github/
+
+# Runtime files
+*.log
+*.lock
+*.cache
+*.tmp
+*.pdb
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Package management
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+
+# Azure deployment files
+.publish/
+*.azureActivityLog.json
+
+# JetBrains Rider files
+.idea/
+*.sln.iml
+
+# VS Code files
+.vscode/
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+# Tye (Microsoft's developer tool for microservices)
+.tye/
+
+# Node.js dependencies (if applicable)
+node_modules/
+npm-debug.log*
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+
+# Linux specific files
+*~
