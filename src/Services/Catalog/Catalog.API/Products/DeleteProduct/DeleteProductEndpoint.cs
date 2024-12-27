@@ -7,11 +7,11 @@ public class DeleteProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete("/products/{id:guid}",async (Guid id,ISender sender) =>
+        app.MapDelete("/products/{id:guid}", (Guid id, ISender sender) =>
         {
             var result = sender.Send(new DeleteProductCommand(id));
             var response = result.Adapt<DeleteProductResponse>();
-            return Results.Ok(response);
+            return Task.FromResult(Results.Ok(response));
         })
         .WithName("DeleteProduct")
         .Produces<DeleteProductResponse>(StatusCodes.Status201Created)
