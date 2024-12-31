@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Basket\DeleteBasket\" />
-    <Folder Include="Basket\StoreBasket\" />
+    <PackageReference Include="Carter" Version="8.2.1" />
+    <PackageReference Include="Marten" Version="7.35.0" />
   </ItemGroup>
 
   <ItemGroup>
