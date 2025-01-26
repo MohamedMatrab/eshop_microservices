@@ -1,7 +1,7 @@
 using BuildingBlocks.Exceptions.Handlers;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
+using Discount.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +29,20 @@ builder.Services.AddStackExchangeRedisCache(opts =>
     opts.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
 
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o =>
+{
+    o.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+})
+    //Not to be used in production - not secure
+    .ConfigurePrimaryHttpMessageHandler(() =>
+    {
+        var handler = new HttpClientHandler()
+        {
+            ServerCertificateCustomValidationCallback = 
+            HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        };
+        return handler;
+    });
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("Default")!)
