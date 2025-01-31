@@ -23,7 +23,7 @@ namespace Ordering.Infrastructure.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Ordering.Domain.Models.Custumer", b =>
+            modelBuilder.Entity("Ordering.Domain.Models.Customer", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -55,7 +55,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Custumers");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Ordering.Domain.Models.Order", b =>
@@ -280,7 +280,7 @@ namespace Ordering.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Ordering.Domain.Models.Order", b =>
                 {
-                    b.HasOne("Ordering.Domain.Models.Custumer", null)
+                    b.HasOne("Ordering.Domain.Models.Customer", null)
                         .WithMany()
                         .HasForeignKey("Custumerid")
                         .OnDelete(DeleteBehavior.Cascade)

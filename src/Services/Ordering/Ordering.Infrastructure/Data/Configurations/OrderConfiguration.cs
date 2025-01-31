@@ -7,7 +7,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasConversion(cId => cId.Value, dbId => OrderId.Of(dbId));
         builder.HasMany(x => x.OrderItems).WithOne().HasForeignKey(x => x.OrderId);
-        builder.HasOne<Custumer>().WithMany().HasForeignKey(x => x.Custumerid).IsRequired();
+        builder.HasOne<Customer>().WithMany().HasForeignKey(x => x.Custumerid).IsRequired();
 
         builder.ComplexProperty(
             o=>o.OrderName,nameBuilder=>

@@ -9,6 +9,7 @@ public static class DependencyInjection
 
     public static IApplicationBuilder UseApiServices(this IApplicationBuilder app)
     {
+        app.UseHttpsRedirection();
         return app;
     }
 }
