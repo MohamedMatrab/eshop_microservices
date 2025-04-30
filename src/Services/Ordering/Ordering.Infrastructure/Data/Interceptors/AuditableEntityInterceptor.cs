@@ -28,8 +28,8 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
             }
             if (entry.State == EntityState.Modified || entry.State==EntityState.Modified || entry.HasChangedOwnedEntities())
             {
-                entry.Entity.LastModifiedBy = "Mohamed";
-                entry.Entity.LastModified = DateTime.UtcNow;
+                entry.Entity.UpdatedBy = "Mohamed";
+                entry.Entity.UpdatedAt = DateTime.UtcNow;
             }
         }
     }

@@ -14,6 +14,7 @@ public class GetOrdersHandler(IApplicationDbContext dbContext)
                        .OrderBy(o => o.OrderName.Value)
                        .Skip(pageSize * pageIndex)
                        .Take(pageSize)
+                       .AsNoTracking()
                        .ToListAsync(cancellationToken);
 
         return new GetOrdersResult(
